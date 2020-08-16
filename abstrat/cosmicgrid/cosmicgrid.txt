@@ -1,0 +1,36 @@
+The puzzle:
+An infinite grid has the number 1 written in some square.
+You may then write numbers in any square as you choose in base 10.
+We now write L(x) to represent the amount of letters (not characters) of x, as written in american english.
+A grid is deemed valid iff each number x on the grid is 8-connected (or equal to) the number y, with L(x)=y.
+What, then, is the greatest n for which a valid grid can be constructed containing every positive integer less than or equal to n?
+
+I have narrowed the answer down to either 42 or 43.
+
+A 41-solution:
+
+31 32 36  .  .  .  .
+26  9 17 13 18 19  .
+22 21  4 14  8 41  .
+ . 16 40  5  1  2  .
+ . 15  7 20  3 24 25
+ . 28 38  6 12 10 29
+ . 23 11 30 39 35 34
+ . 27 33 37  .  .  .
+
+
+A 42-solution:
+
+ .  .  .  .  . 23 27 28
+17 21 22  . 12 33 11 37
+26  9 31  1 30  6 20 38
+32 36  4  2  3 24 25  .
+ . 13 14  5 39 10 29  .
+ . 18  8 40  7 35 34  .
+ . 41 42 19 15 16  .  .
+
+
+No 43-solution is known. I strongly suspect it cannot be done, but haven't been able to prove it.
+44-solutions and higher are proven impossible, by saturation of 9.
+A C++ program I wrote is available at alexhontz.com/misc/cosmicgrid/grid.cpp which is useful when searching for solutions.
+It was able to find a solution isomorphic to the above 42-solution.

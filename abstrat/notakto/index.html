@@ -1,0 +1,91 @@
+<html>
+<head><title>Notakto Trainer</title></head>
+<meta charset="UTF-8">
+<body>
+	<canvas id="ctx" width="300" height="300">Your browser doesn't support canvas.</canvas>
+	<h1>Enter the characteristic polynomial!</h1>
+	<h1 id="question"></h1>
+	<input name="ans" onChange="if(this.value.toLowerCase() == ans) {tick(); this.value = '';}" type="text"/>
+	<br/>Check out my <a href="https://github.com/2swap/AbStrat">misere connection game solver</a> on github!
+<script>
+	var curBoard = 0, ans = "";
+	var ctx = document.getElementById("ctx").getContext("2d");
+
+/*
+	1	2	4
+	8	16	32
+	64	128	256
+*/
+
+	var boards = {
+		"1":	[0o100, 0o200, 0o142, 0o777],
+		"a":	[0o104, 0o210, 0o202, 0o301, 0o520, 0o502, 0o160, 0o330, 0o350, 0o314, 0o306, 0o505, 0o252, 0o361, 0o343, 0o345, 0o356],
+		"b":	[0o101, 0o120, 0o140, 0o220, 0o310, 0o250, 0o360, 0o321, 0o341, 0o303, 0o305, 0o522, 0o162, 0o352, 0o354],
+		"c":	[0o000],
+		"d":	[0o340, 0o304, 0o302],
+		"ab":	[0o320, 0o230, 0o501, 0o342, 0o344],
+		"ad":	[0o300],
+		"cc":	[0o020]
+	};
+
+	tick();
+	function tick(){
+		ctx.fillStyle = "black";
+		ctx.fillRect(0,0,300,300);
+		ctx.fillStyle = "white";
+		ctx.fillRect(5,5,290,290);
+		ctx.fillStyle = "black";
+		var sum = 0;
+		for(var b in boards) sum+=boards[b].length;
+		sum=Math.floor(Math.random()*sum);
+
+		for(var b in boards) {
+			if(boards[b].length>sum){
+				ans      = b;
+				curBoard = boards[b][sum];
+				if(Math.random() < .5) curBoard = flipBoard(curBoard);
+				for(var i = Math.random() * 4; i < 4; i++) curBoard = rotateBoard(curBoard);
+				for(var i = 0; i < 9; i++) if(curBoard & (1<<i))
+					ctx.fillRect(25+i%3*100, 25+Math.floor(i/3)*100, 50, 50);
+					return;
+				}
+				sum-=boards[b].length;
+		}
+	}
+
+	function rotateBoard(x){
+		var out =
+		((x & 0b100000000)>>2) +
+		((x & 0b010000000)>>4) +
+		((x & 0b001000000)>>6) +
+		((x & 0b000100000)<<2) +
+		((x & 0b000010000)<<0) +
+		((x & 0b000001000)>>2) +
+		((x & 0b000000100)<<6) +
+		((x & 0b000000010)<<4) +
+		((x & 0b000000001)<<2);
+		return out;
+	}
+	function flipBoard(x){	
+		return ((x&0o700)>>6) + (x&0o070) + ((x&0o007)<<6);
+	}
+</script>
+	<br/>
+	<br/>
+	Always Remember:
+	<br/>
+	b^2b = b
+	<br/>
+	b^2c = c
+	<br/>
+	b^2d = d
+	<br/>
+	a^2 = 1
+	<br/>
+	cd = ad
+	<br/>
+	d^2 = c^2
+	<br/>
+	c^3 = ac^2
+</body>
+</html>
