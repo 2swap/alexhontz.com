@@ -1,0 +1,91 @@
+Othello- Evaporate Directionally.
+do you like reading?
+
+wqomi12/28/2020
+heh, i like it, but i don't do it that often
+[12:18 AM]
+wby?
+
+2swap12/28/2020
+i wish i did
+[12:18 AM]
+but at the same time i kind of dont
+
+wqomi12/28/2020
+you like being quick, right?
+
+2swap12/28/2020
+yeah
+[12:19 AM]
+but that's not really it
+[12:19 AM]
+I think that getting gists is the best way to go about life
+
+wqomi12/28/2020
+it's probably the most efficient
+
+2swap12/28/2020
+if you drown yourself in rigor, you will be immobile and unable to progress
+but if you don't delve deep enough, you will be prone to misunderstanding and may be misled
+[12:22 AM]
+this is a jungian idea, but also a taoist and buddhist one
+[12:22 AM]
+see bottom left of my chart, "one foot in order and one foot in chaos"
+[12:22 AM]
+same principle
+
+wqomi12/28/2020
+that's mind blowing
+
+2swap12/28/2020
+i'm glad you like :)
+
+wqomi12/28/2020
+i'm still thinking about it
+
+2swap12/28/2020
+yeah
+[12:25 AM]
+it's a sort of patterned idea that exists at many resolutions and manifests in many different contexts
+[12:25 AM]
+I think it makes for a good life philosophy
+[12:25 AM]
+did we ever play reversi?
+
+wqomi12/28/2020
+no
+[12:26 AM]
+did we?
+
+2swap12/28/2020
+I think reversi is a direct instantiation of that idea
+[12:26 AM]
+well, not the game itself, but well adjusted play
+[12:27 AM]
+and the fact that well-adjusted play literally looks like a taijitu is just an added bonus
+
+
+
+
+
+
+
+Go- Become empty and you will become the universe.
+The rules of go are so elegant, organic, and rigorously logical that if intelligent life forms exist elsewhere in the universe, they almost certainly play go.
+- Edward Lasker[2]
+
+{it is} something unearthly . . . If there are sentient beings on other planets, then they play Go.
+- Emanuel Lasker, chess world champion[1]
+
+The fact of the matter is, Go is a breeding ground for "rules for life". "Go Proverbs" are hundreds, and I think that this is because of the game's simplicity. Among one of Go's greatest selling points is that it features an incredible level of generation of complexity from simplicity (there's a word for this, right?). We do not see such behavior from Chess, for example. Go's strategy is immensely complex, patterned, and multiresolutional from life-and-death to full board strategy, whereas Chess play is comparatively played on only one level of resolution. This is because Go is not bathed in noise from its own rules- they are sufficiently simple for the underlying patterns shared between all sorts of formal systems to shine through. This is why Go is dripping with life advice, like:
+[insert many go proverbs here]
+
+
+
+
+
+
+
+
+Hex: You Are Your Enemy
+One of the most interesting features of Hex is the symmetry present between the two players. Not only is the board physically symmetric, so are the goal states of each player. Similarly, the place you should play is also often the place your opponent should play.

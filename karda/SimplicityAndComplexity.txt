@@ -1,0 +1,44 @@
+Thesis: The world is complex, but the most salient methods of interpreting it are deeply patterned albeit noisy.
+
+Background:
+One day I will find the right words, and they will be simple. 
+
+Interpretation:
+The world is separate from our methods of interpreting it. We are interested in the relationship between the world itself, our interpreted image of the world, and the actual methods of interpretation of the world, and the interrelation between the three.
+We will first examine this claim from a materialist perspective, since that perspective is likely the one with which my audience is most familiar.
+
+Formalization:
+More formally, by this we mean that although the world is a chaotic system with many resolutions of mechanics simultaneously interplaying with eachother (Fig 1,) the "similarity between the interpreted world and the actual world"* grows more or less logarithmically as a function of the complexity of our interpretative structure.
+This is true in any "world": the linguistic world, the world of quantum stuff happening, etc.
+
+This is important not because it shows what the complexity of interpretive structure looks like mathematically, but instead that it shows us that the world is deeply patterned.
+
+*This is a simplification that cannot truly be measured, since the world will always be infinitely different from the interpreted world unless the interpretative structure is perfect. Really, it should say "The practicality, or predictive power, of the interpreted world when manifesting behavior in the actual world"
+
+
+
+
+
+
+Fig 1
+
+Linguistic
+Sociocultural, Climatic
+Geopolitical, Geological
+Biological
+Newtonian
+Quantum
+
+
+
+
+
+What can we learn from this?
+
+Here are some related quotes that we will unpack:
+
+"The quieter you become, the more you can hear". -Ram Dass, also a hacker's maxim and slogan of Kali Linux
+"Empty your cup, so that it may be filled" -Bruce Lee, restating the essence of a Zen Koan
+
+
+This is profoundly true, and I will use board games as a proof.

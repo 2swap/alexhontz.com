@@ -1,0 +1,38 @@
+Video ideas for my Youtube channel
+
+1. Math and fractals
+        - Fractal Dive, and structures which emerge from iterated functions
+        - Periodic, but with no fundamental period
+2. Programming
+        - Making bots for Torn (in the style of Code Bullet)
+3. Philosophy
+        - How to read liturgical texts honestly, and what is to be gained
+        - A psychological argumet for the existence of God as a dramatic manifestation of behavior
+        - What psychology has to learn from ML, and latent spaces
+        - Animism and Psychology
+        - You are not one
+4. Cube Talks
+        - What is a twisty puzzle?
+        - Repeated Algorithms, and the classic group theory result of a^n=1
+        - Movesets and Turn Metrics, and why half turn metric is stupid
+        - Orbits and Subgraphs, or "You twisted a corner!"
+        - What, in essence, is parity, and how to identify or create a 2swap
+        - How to solve any twisty puzzle
+        - Bizarre algorithms that seem to appear everywhere: T perm, Sune, etc.
+        - Commutators and conjugates in the general form
+        - Interchangeable centers, abusing a puzzle's geometry, and when not to bother with comms
+        - Representing twisty puzzles as groups, and the 2x2 half-turn puzzle
+        - Representing twisty puzzles as graphs, autoisometry, bandaging, and heuristics for difficulty
+        - Puzzle Geometry, ridiculous puzzle naming conventions, and a disambiguation of puzzle types
+        - Philosophically, what makes twisty puzzles difficult in general, when moving along a graph is easy?
+        - Invariants, and how to use them in puzzle proofs
+        - A long list of complaints about the WCA
+        - A thorough explanation of the theory behind the ZZ method
+        - My collection
+        - The underlying structure of God's Number, and how we found it
+        - Multidimensional twisty puzzles
+        - What is the deal with rubiks clocks and magics
+        - FMC and inversions
+5. Linguistics
+        - Issues with the question of Proto-world, or What is a language?
+        - Style transfer: this is what your language sounds like to foreigners!
