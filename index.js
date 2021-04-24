@@ -78,9 +78,20 @@ letters.p=
  [0,1,1,0,0,0,0,0],
  [0,1,1,0,0,0,0,0],
  [0,1,1,0,0,0,0,0]];
+letters.kana=
+[[0,0,1,0,0,0,0,0],
+ [0,0,1,0,0,0,0,0],
+ [0,0,1,0,0,0,0,0],
+ [0,0,1,0,0,0,0,0],
+ [0,0,1,0,0,0,0,1],
+ [0,0,0,1,0,0,1,0],
+ [0,0,0,1,1,1,0,1],
+ [0,0,0,1,0,0,0,1]];
 
 
+var numberOfAnimations = 8;
 var mapSz = 10, pixSz = 3;
+var effect = -1, timer = -1, opacity = 0;
 var devMode = false;
 var opacity = .5, opacitySmooth = 1;
 var alpha = 0, beta = 0, alphaList = new Array(5), betaList = new Array(5);
@@ -136,11 +147,9 @@ function render() {
 		
 	var d = new Date();
 	var startTimer = d.getTime();
-		
-	ctx.fillStyle = "black";
-	opacitySmooth = (opacitySmooth*5+opacity)/6;
-	ctx.globalAlpha = opacitySmooth;
-	ctx.fillRect(0,0,w,h);
+	
+	ctx.globalAlpha = .2;
+	ctx.clearRect(0,0,w,h);
 	ctx.globalAlpha = 1;
 	rLand(startTimer - bootTime);
 		
@@ -153,6 +162,21 @@ function render() {
 		ctx.fillStyle = "white";
 		ctx.fillText(t,8,16);
 	}
+
+	var desc = "error";
+	if(effect == 0) desc = "Hi! I'm Alex Hontz!";
+	if(effect == 1) desc = "I'm a software engineer at SpaceX.";
+	if(effect == 2) desc = "";
+	if(effect == 3) desc = "someContent";
+	if(effect == 4) desc = "someContent";
+	if(effect == 5) desc = "Check out my Rubik's Cube tournament page <a href=''>here</a>";
+	if(effect == 6) desc = "someContent";
+	if(effect == 7) desc = "someContent";
+	if(timer>5*numberOfAnimations)
+		desc = "";
+
+	document.getElementById("description").style.opacity=opacity;
+	document.getElementById("description").innerHTML=desc;
 }
 function rLand(t){
 	for(var x = -mapSz/2+.5; x <= mapSz/2-.5; x++)
@@ -163,28 +187,32 @@ function rLand(t){
 			}
 }
 function transform(cube,t){
-	var timer = t/1500;
+	timer = t/1500;
+	var o = timer%5/5;
+	opacity = Math.pow(-4*o*(o-1), .5);
 	var w = timer%1;
 	var pd = Math.floor(timer) % 5;
-	var effect = Math.floor(timer/5%8);
+	effect = Math.floor(timer/5%numberOfAnimations);
 	var transformed;
 
 	     if(effect == 0) var trans = vibrate(makeLetter(cube, 'alex', t),t);
-	else if(effect == 1) var trans = warp1(warp1(makeSphere(cube),t),t);
-	else if(effect == 2){var trans = rubiks(cube,t); transformed = trans;}
+	else if(effect == 1) var trans = solarSystem(cube,t);
+	else if(effect == 2) var trans = resonate(cube, t);
 	else if(effect == 3) var trans = warp2(warp2(warp1(cube,t),t),t);
 	else if(effect == 4) var trans = warp2(warp2(warp1(makeSphere(cube),t),t),t);
-	else if(effect == 5) var trans = resonate(cube, t);
-	else if(effect == 6) var trans = warp1(makeSphere(cube),t);
-	else if(effect == 7) var trans = warp2(warp1(cube,t),t);
-	if(effect != 2) transformed = trancerp(trans,cube,pd,w);
-	return spinCrazy(transformed,t);
+	else if(effect == 5){var trans = rubiks(cube,t); transformed = trans;}
+	else if(effect == 6) var trans = warp2(warp1(cube,t),t);
+	else if(effect == 7) var trans = warp1(warp1(makeSphere(cube),t),t);
+	if(effect != 5) transformed = trancerp(trans,cube,pd,w);
+	transformed = spinCrazy(transformed,t, .6);
+
+	return transformed;
 }
-function spinCrazy(cube,t){
+function spinCrazy(cube,t,amt){
 	var x = cube.x, y = cube.y, z = cube.z;
-	var s1 = Math.sin(t/700)*.6; // make s1,2,3 t/1000 for more chaotic behavior.
-	var s2 = Math.sin(t/500)*.6-Math.PI/2; // this rotates around an "anchor" orientation.
-	var s3 = Math.sin(t/900)*.6+Math.PI/2; // while that rotates freely
+	var s1 = Math.sin(t/700)*amt; // make s1,2,3 t/1000 for more chaotic behavior.
+	var s2 = Math.sin(t/500)*amt-Math.PI/2; // this rotates around an "anchor" orientation.
+	var s3 = Math.sin(t/900)*amt+Math.PI/2; // while that rotates freely
 	var x1 = Math.cos(s1+Math.atan2(y,x))*Math.hypot(x,y);
 	var y1 = Math.sin(s1+Math.atan2(y,x))*Math.hypot(x,y);
 	var z1 = z;
@@ -204,11 +232,32 @@ function resonate(cube,t){
 	var fac = 1+.7*Math.sin(-t/200+dist)/dist;
 	return {x:cube.x*fac,y:cube.y*fac,z:cube.z*fac};
 }
-function makeSphere(cube){
+function makeSphereOld(cube){
 	var shift = cube.z+mapSz/2-.5;
 	var x = (cube.x+mapSz/2-.5)*Math.PI*2/mapSz + shift%4*Math.PI/mapSz, y = (cube.y+mapSz/2-.5)*Math.PI*2/mapSz + (Math.floor(shift/2)+.5)*Math.PI*2/mapSz/mapSz;
 	var siny = Math.sin(y);
 	return {x:6*Math.cos(x)*siny,y:6*Math.sin(x)*siny,z:6*Math.cos(y)};
+}
+function noise(cube, seed){
+	return (cube.y*cube.x*64.102 + cube.x*cube.z*304.93274 + cube.z*438.192 + seed*40.4983 + 1000000) % 1;
+}
+function makeSphere(cube){
+	cube2 = {x: cube.x + 3*(noise(cube, 0)-.5),
+	         y: cube.y + 3*(noise(cube, 1)-.5),
+	         z: cube.z + 3*(noise(cube, 2)-.5)};
+	hypot = Math.sqrt(cube2.x*cube2.x + cube2.y*cube2.y + cube2.z*cube2.z);
+	return scale(cube2, 6/hypot);
+}
+function solarSystem(cube, t){
+	let n = noise(cube, 5);
+	if(n%1>.2) return makeSphere(cube);
+	n*=5;
+	const branch = Math.floor(n*5)*(Math.PI*2/5);
+	n = t/500 + n%.2 * 5 * Math.PI * 2;
+	const cx = 7*Math.cos(n)*0.866;
+	const cy = 7*Math.cos(n)*0.5;
+	const cz = 7*Math.sin(n);
+	return {x: Math.sin(branch)*cz + Math.cos(branch)*cx, z: cy, y: -Math.sin(branch)*cx + Math.cos(branch)*cz}
 }
 function warp1(cube, t){
 	var x = cube.x, y = cube.y, z = cube.z;
@@ -311,8 +360,7 @@ function cerp3d(a,b,w){
 	return {x:cerp(a.x,b.x,w),y:cerp(a.y,b.y,w),z:cerp(a.z,b.z,w),skip:(a.skip||b.skip)};
 }
 function project(ax, ay, az, col) {
-	/*This function was written independently, but I did use some of the mathematics described in
-	this wikipedia page to develop it. https://en.wikipedia.org/wiki/3D_projection */
+	/*https://en.wikipedia.org/wiki/3D_projection */
 	
 	var rAlpha = alpha;
 	var rBeta = beta+Math.PI / 2;
@@ -380,6 +428,17 @@ function makeLetter(cube, str, t){
 	fit = fit && inBounds(cube.y+mapSz/2-.5) && inBounds(cube.z+mapSz/2-.5) && arr[cube.y+mapSz/2-.5][cube.z+mapSz/2-.5] == 1;
 	if(!fit) return scale(warp1(warp1(makeSphere(cube), t), t), 10);
 	return scale({x:-cube.z+cube.x*(mapSz+1), y:0, z:-cube.y}, .3);
+}
+function makeGEBCube(cube, str, t){
+	var fit = true;
+	var x = cube.x+mapSz/2-.5;
+	var y = cube.y+mapSz/2-.5;
+	var z = cube.z+mapSz/2-.5;
+	fit = letters.a[x][y]==1
+	   && letters.e[y][z]==1
+	   && letters.x[z][x]==1;
+	if(!fit) return scale(warp1(warp1(makeSphere(cube), t), t), 10);
+	return cube;
 }
 function scale(cube, scale){
 	cube.x *= scale;

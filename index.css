@@ -6,10 +6,12 @@ body{
 	left:0;
 	right:0;
 	overflow:hidden;
+	background: black;
 }
 canvas{
 	position:absolute;
 	top:0;
+	z-index:-1;
 }
 .menu{
 	width:100%;
@@ -58,3 +60,16 @@ canvas{
 
 .dropdown:hover .dropbtn {background-color: #888;}
 button:hover {background-color: #888;}
+
+#description {
+	position: absolute;
+	top: 80%;
+	font-size: 30px;
+	left: 0;
+	right: 0;
+	text-align: center;
+	position:absolute;
+	color:#222;
+	font-family: arial;
+	z-index:-2;
+}
